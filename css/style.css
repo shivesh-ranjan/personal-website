@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Luxurious+Roman&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -90,10 +90,10 @@ html{
     margin:auto;
 }
 .text-big{
-    font-size: 30px;
+    font-size: 3rem;
 }
 .text-small{
-    font-size: 18px;
+    font-size: 1.3rem;
 }
 .btn{
     padding: 8px 20px;
@@ -103,6 +103,9 @@ html{
     background: none;
     color: white;
     cursor: pointer;
+}
+.btn:hover{
+    color: yellow;
 }
 .btn-sm{
     padding: 6px 10px;
@@ -120,7 +123,7 @@ html{
     flex-direction: row-reverse;
 }
 .sectionSubTag{
-    font-family: 'Ephesis', cursive;
+    font-family: 'Luxurious Roman', cursive;
 }
 .thumbnail img{
     width:150px;
