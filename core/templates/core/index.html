@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chad's Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+  </head>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' style="padding: 0 0 0 0; margin: 0 0 0 0; background-color: black;">
+    <nav class="sticky w-full bg-black mb-2">
+      <div class="container flex items-center justify-between px-6 pt-6 pb-4 mx-auto">
+        <div class="flex items-center"> 
+          <a href="" class="font-mono font-extrabold text-lg text-white pr-4 hover:underline hover:text-yellow-200">HOME</a>
+          <a href="" class="font-mono font-extrabold text-lg text-white pr-4 hover:underline hover:text-yellow-200">PROJECTS</a>
+          <a href="" class="font-mono font-extrabold text-lg text-white hover:underline hover:text-yellow-200">BLOGS</a>
+        </div>
+        <div class="flex items-center">
+          <button class="font-mono font-extrabold bg-yellow-300 text-black py-2 px-4 rounded-lg hover:bg-white hover:text-black">LOGIN</button>
+        </div>
+      </div>
+      <hr class="w-full h-1 bg-yellow-400">
+    </nav>
+    <div id="body">
+      <div class="container mx-auto grid grid-cols-1 md:grid-flow-cols md:grid-cols-2 gap-4 my-8 mx-4 p-2 max-w-2xl">
+        <div class="md:col-span-1">
+          <img class="w-28 mx-auto rounded-full" src="https://imgs.search.brave.com/5TUrhnb1Se-ppc3etZn6gR-dc8BTB9dDJB3vtozpx0U/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY0L2Y1/LzAxLzY0ZjUwMWRi/NDY3YzQ0NDQ1Mjg1/NTkxYWI4Y2E4NTEy/LmpwZw" alt="profile_pic">
+        </div>
+        <div class="md:col-span-1 md:py-2">
+          <p class="font-mono text-yellow-200 text-3xl font-extrabold text-center md:text-left">GIGA CHAD</p>
+          <p class="font-mono text-white text-xl font-extrabold text-center md:text-left py-2">Pretends to be a ML and Web Developer</p>
+          <p class="font-mono text-slate-300 font-extrabold text-sm text-center md:text-left">Arch Linux + i3 + VIM user</p>
+        </div>
+      </div>
+      <hr class="mx-auto h-[1px] max-w-2xl bg-slate-200">
+      <div class="container mx-auto max-w-2xl px-4 py-6">
+        <p class="font-mono font-extrabold text-yellow-200">Q - Why did the two Java methods get a divorce?</p> 
+        <p class="font-extrabold font-mono text-white">A - Because they couldn't agree on the return type.</p>
+      </div>
+      <hr class="mx-auto h-[1px] max-w-2xl bg-slate-200">
+      <div class="container mx-auto max-w-2xl px-4 py-6">
+        <p class="font-mono font-extrabold text-yellow-200 text-3xl">Featured Projects:</p>
+        <div class="container grid max-w-2xl grid-cols-1 md:grid-cols-2 gap-4 my-4">
+          {% for proj in allproj %}
+          <div class="bg-slate-700 rounded-lg px-2 py-4">
+            <img src="" alt="">
+            <p class="font-mono font-extrabold text-yellow-200">{{ proj.projectName|slice:"0:30" }}</p>
+            <p class="font-mono font-extrabold text-white">{{ proj.projectDesc|slice:"0:90" }}...</p>
+            <div class="flex justify-between">
+              <a class="rounded-md bg-yellow-300 text-black text-sm p-1 font-extrabold font-mono hover:bg-white" href={{ proj.projectGitHub }}>GITHUB</a>
+              <a class="rounded-md bg-yellow-300 text-black text-sm p-1 font-extrabold font-mono hover:bg-white" href={{ proj.projectDeployed }}>Deployed</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- have a button POST a click via AJAX -->
+    <button class="my-2 rounded-lg bg-blue-500 px-4 py-2 text-white mx-2 hover:bg-blue-800 hover:text-yellow-200 hover:ring hover:ring-blue-300" hx-get="gigachaddy/project/" hx-swap="outerHTML" hx-target="#body">
+      Click Me
+    </button>
+  </body>
+</html>
