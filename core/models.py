@@ -8,6 +8,7 @@ class Project(models.Model):
     projectDate = models.DateField(auto_now_add=True)
     projectGitHub = models.URLField(max_length=555)
     projectDeployed = models.URLField(max_length=555)
+    projectPic = models.ImageField(upload_to='projectPics/')
 
     def __str__(self):
         return self.projectName

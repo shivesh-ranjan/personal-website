@@ -43,9 +43,9 @@
         <div class="container grid max-w-2xl grid-cols-1 md:grid-cols-2 gap-4 my-4">
           {% for proj in allproj %}
           <div class="bg-slate-700 rounded-lg px-2 py-4">
-            <img src="" alt="">
-            <p class="font-mono font-extrabold text-yellow-200">{{ proj.projectName|slice:"0:30" }}</p>
-            <p class="font-mono font-extrabold text-white">{{ proj.projectDesc|slice:"0:90" }}...</p>
+            <img src={{ proj.projectPic.url }} alt="Project Pic" >
+            <p class="font-mono font-extrabold text-yellow-200 mt-2">{{ proj.projectName|slice:"0:30" }}</p>
+            <p class="font-mono font-extrabold text-white py-2">{{ proj.projectDesc|slice:"0:90" }}...</p>
             <div class="flex justify-between">
               <a class="rounded-md bg-yellow-300 text-black text-sm p-1 font-extrabold font-mono hover:bg-white" href={{ proj.projectGitHub }}>GITHUB</a>
               <a class="rounded-md bg-yellow-300 text-black text-sm p-1 font-extrabold font-mono hover:bg-white" href={{ proj.projectDeployed }}>Deployed</a>
