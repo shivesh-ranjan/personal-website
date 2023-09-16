@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chad's Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+</head>
+
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' style="padding: 0 0 0 0; margin: 0 0 0 0;">
+    <div class="bg-scroll -z-50"
+        style="background-image:url(https://imgs.search.brave.com/kenpjc9bK6n6JFLosfs9-cN3h9YR91ZuV0Ck5zBuWIE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMi53/cC5jb20vaS5waW5p/bWcuY29tL29yaWdp/bmFscy82Mi82NC82/Zi82MjY0NmY4NzAw/M2U5ZDFhOGU1MzM5/YmZmZmJjZjViOC5q/cGc);">
+        <div class="bg-black bg-opacity-70">
+            <nav class="fixed w-full bg-black bg-opacity-20 backdrop-blur-lg">
+                <div class="container flex items-center justify-between px-6 pt-6 pb-6 mx-auto">
+                    <div class="flex items-center">
+                        <a href=""
+                            class="font-mono font-extrabold text-lg text-white pr-4 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500">HOME</a>
+                        <a hx-get="projects/" hx-target="#body" hx-swap="innerHTML"
+                            class="font-mono font-extrabold text-lg text-white pr-4 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500">PROJECTS</a>
+                        <a hx-get="blogs/" hx-target="#body" hx-swap="innerHTML"
+                            class="font-mono font-extrabold text-lg text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500">BLOGS</a>
+                    </div>
+                    <div class="flex items-center">
+                        <button
+                            class="font-mono font-extrabold bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-2 px-4 rounded-lg hover:from-purple-400 hover:to-pink-600">LOGIN</button>
+                    </div>
+                </div>
+            </nav>
+            <div id="body" class="py-[110px]">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <!-- have a button POST a click via AJAX -->
+            <button
+                class="my-2 rounded-lg bg-blue-500 px-4 py-2 text-white mx-2 hover:bg-blue-800 hover:text-yellow-200 hover:ring hover:ring-blue-300"
+                hx-get="gigachaddy/project/" hx-swap="innerHTML" hx-target="#body">
+                Click Me
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

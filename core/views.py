@@ -7,15 +7,21 @@ from .models import Project, Blog
 # Create your views here.
 @require_http_methods(['GET'])
 def index(request):
-    projects=[]
     allproj = Project.objects.order_by('projectDate')[:4]
-    blogs=[]
     allblog = Blog.objects.order_by('blogDate')[:4]
     return render(request, 'core/index.html', {'allproj': allproj, 'allblog': allblog})
 
-def clicked(request):
-    if request.method == 'POST':
-        return HttpResponse("""<p class="font-mono font-extrabold text-yellow-200">Clicked</p>""")
+@require_http_methods(['GET'])
+def projects(request):
+    if request.method == 'GET':
+        allproj = Project.objects.order_by('projectDate')
+        return render(request, 'core/projects.html', {'allproj': allproj})
+
+@require_http_methods(['GET'])
+def blogs(request):
+  if request.method == 'GET':
+    allblog = Blog.objects.order_by('blogDate')
+    return render(request, 'core/blogs.html', {'allblog': allblog})
 
 @require_http_methods(['GET', 'POST'])
 def gigachaddyProject(request):

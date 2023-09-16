@@ -1,0 +1,24 @@
+<div class="container mx-auto max-w-2xl px-4 py-6">
+    <p
+      class="font-mono font-extrabold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-500">
+      Latest Blogs:</p>
+    <div class="container grid max-w-2xl grid-cols-1 md:grid-cols-2 gap-4 my-4">
+      {% for blog in allblog %}
+      <div class="bg-white bg-opacity-20 backdrop-blur-md rounded-lg px-2 py-4">
+        <img src={{ blog.blogPic.url }} alt="Blog Pic">
+        <p
+          class="font-mono font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mt-2">
+          {{ blog.blogName|slice:"0:30" }}</p>
+        <p class="font-mono font-extrabold text-white py-2">{{ blog.blogDesc|striptags|safe | truncatechars:90 }}
+        </p>
+        <div class="flex justify-between">
+          <a class="font-mono font-extrabold bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-2 px-4 rounded-lg hover:from-purple-500 hover:to-pink-500"
+            href="">Visit</a>
+          <p
+            class="py-2 px-4 font-mono font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">
+            #{{ blog.blogCategory }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>

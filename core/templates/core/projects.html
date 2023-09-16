@@ -1,0 +1,22 @@
+<div class="container mx-auto max-w-2xl px-4 py-6">
+    <p
+      class="font-mono my-6 font-extrabold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-500">
+      Recent Projects:</p>
+    <div class="container grid max-w-2xl grid-cols-1 md:grid-cols-2 gap-4 my-4">
+      {% for proj in allproj %}
+      <div class="rounded-lg px-2 py-4 bg-white bg-opacity-20 backdrop-blur-md">
+        <img src={{ proj.projectPic.url }} alt="Project Pic">
+        <p
+          class="font-mono font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mt-2">
+          {{ proj.projectName|slice:"0:30" }}</p>
+        <p class="font-mono font-extrabold text-white py-2">{{ proj.projectDesc|slice:"0:90" }}...</p>
+        <div class="flex justify-between">
+          <a class="font-mono font-extrabold bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-2 px-4 rounded-lg hover:from-purple-500 hover:to-pink-500"
+            href={{ proj.projectGitHub }}>GITHUB</a>
+          <a class="font-mono font-extrabold bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-2 px-4 rounded-lg hover:from-purple-500 hover:to-pink-500"
+            href={{ proj.projectDeployed }}>Deployed</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
