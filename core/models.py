@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Project(models.Model):
@@ -14,8 +15,11 @@ class Project(models.Model):
     def __str__(self):
         return f"{self.projectId}: {self.projectName}"
 
+
+
 class Blog(models.Model):
     blogId = models.AutoField
+    blogAuthor = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     blogName = models.CharField(max_length=255)
     blogDesc = RichTextField()
     blogDate = models.DateField(auto_now_add=True)
@@ -23,4 +27,4 @@ class Blog(models.Model):
     blogCategory = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.blogName
+        return self.blogName + " | " + str(self.blogAuthor)
