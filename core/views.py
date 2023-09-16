@@ -2,16 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.views.decorators.http import require_http_methods
-from .models import Project
+from .models import Project, Blog
 
 # Create your views here.
 @require_http_methods(['GET'])
 def index(request):
     projects=[]
     allproj = Project.objects.order_by('projectDate')[:4]
-    for proj in allproj:
-        print(proj.projectName)
-    return render(request, 'core/index.html', {'allproj': allproj})
+    blogs=[]
+    allblog = Blog.objects.order_by('blogDate')[:4]
+    return render(request, 'core/index.html', {'allproj': allproj, 'allblog': allblog})
 
 def clicked(request):
     if request.method == 'POST':
