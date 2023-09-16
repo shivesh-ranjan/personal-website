@@ -1,9 +1,9 @@
 <div class="container mx-auto max-w-2xl px-4 py-6">
     <p
-      class="font-mono my-6 font-extrabold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-500">
+      class="font-mono my-6 font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-500">
       Recent Projects:</p>
     <div class="container grid max-w-2xl grid-cols-1 md:grid-cols-2 gap-4 my-4">
-      {% for proj in allproj %}
+      {% for proj in object_list %}
       <div class="rounded-lg px-2 py-4 bg-white bg-opacity-20 backdrop-blur-md">
         <img src={{ proj.projectPic.url }} alt="Project Pic">
         <p

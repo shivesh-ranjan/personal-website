@@ -13,9 +13,13 @@ class Project(models.Model):
     projectPic = models.ImageField(upload_to='projectPics/')
 
     def __str__(self):
-        return f"{self.projectId}: {self.projectName}"
+        return self.projectName
 
+class BlogCategory(models.Model):
+    blogCategory = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.blogCategory
 
 class Blog(models.Model):
     blogId = models.AutoField
@@ -24,7 +28,7 @@ class Blog(models.Model):
     blogDesc = RichTextField()
     blogDate = models.DateField(auto_now_add=True)
     blogPic = models.ImageField(upload_to='blogPics/')
-    blogCategory = models.CharField(max_length=255)
+    blogTag = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.blogName + " | " + str(self.blogAuthor)

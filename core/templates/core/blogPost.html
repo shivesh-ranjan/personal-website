@@ -1,0 +1,10 @@
+{% extends 'core/layout.html' %}
+{% block content %}
+<div class="container mx-auto max-w-2xl px-4 py-6">
+<div class="container grid max-w-2xl grid-cols-1 gap-4 bg-white bg-opacity-10 backdrop-blur-md rounded-lg py-6 px-4">
+<p class="font-mono font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-500">{{ blog.blogName }}</p>
+<div class="text-white font-mono">{{ blog.blogDesc | safe }}</div>
+<p class="text-purple-500 font-extrabold font-mono">{{ blog.blogAuthor }}</p>
+</div>
+</div>
+{% endblock %}
